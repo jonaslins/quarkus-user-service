@@ -2,6 +2,7 @@ package io.github.jonaslins;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 @ApplicationScoped
@@ -23,4 +24,12 @@ public class UserService {
        return userRepository.findById(id);
     }
 
+    public void deleteById(String id) {
+        User user = getById(id);
+        if(user != null){
+            userRepository.delete(user);
+        }else{
+            throw new NotFoundException();
+        }
+    }
 }

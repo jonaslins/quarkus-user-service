@@ -30,4 +30,10 @@ public class UserResource {
     public User getById(@PathParam(value = "id") String id){
         return userService.getById(id);
     }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteById(@PathParam(value = "id") String id){
+        userService.deleteById(id);
+    }
 }
