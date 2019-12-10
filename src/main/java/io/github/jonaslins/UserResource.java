@@ -3,6 +3,7 @@ package io.github.jonaslins;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -21,7 +22,7 @@ public class UserResource {
     }
 
     @POST
-    public User save(User user) {
+    public User save(@Valid User user) {
         return userService.save(user);
     }
 
