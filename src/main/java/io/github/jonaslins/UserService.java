@@ -8,7 +8,7 @@ import java.util.List;
 public class UserService {
 
     @Inject
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     public List<User> getUsers() {
         return userRepository.listAll();
@@ -18,4 +18,9 @@ public class UserService {
         userRepository.persist(user);
         return user;
     }
+
+    public User getById(String id) {
+       return userRepository.findById(id);
+    }
+
 }

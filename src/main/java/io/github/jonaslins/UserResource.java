@@ -1,5 +1,7 @@
 package io.github.jonaslins;
 
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,7 +13,7 @@ import java.util.List;
 public class UserResource {
 
     @Inject
-    private UserService userService;
+    UserService userService;
 
     @GET
     public List<User> getUsers() {
@@ -21,5 +23,11 @@ public class UserResource {
     @POST
     public User save(User user) {
         return userService.save(user);
+    }
+
+    @GET
+    @Path("/{id}")
+    public User getById(@PathParam(value = "id") String id){
+        return userService.getById(id);
     }
 }
